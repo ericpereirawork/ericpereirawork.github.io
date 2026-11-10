@@ -91,7 +91,18 @@
 
   <noscript><p class="noscript">This portfolio needs JavaScript enabled to display the project list.</p></noscript>
 
-  <script src="content.js"></script>
-  <script src="app.js"></script>
+  <script>
+    /* Load content.js fresh on every visit so edits show up straight away. */
+    (function () {
+      var c = document.createElement("script");
+      c.src = "content.js?t=" + Date.now();
+      c.onload = function () {
+        var a = document.createElement("script");
+        a.src = "app.js?v=2";
+        document.body.appendChild(a);
+      };
+      document.body.appendChild(c);
+    })();
+  </script>
 </body>
 </html>
