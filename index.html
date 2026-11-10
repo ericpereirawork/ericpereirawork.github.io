@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eric Pereira — Post-production &amp; AI Video</title>
+  <meta name="description" content="Eric Pereira — post-production and AI video pipelines for entertainment and brand work.">
+  <meta name="theme-color" content="#07070a">
+  <meta property="og:title" content="Eric Pereira — Post-production &amp; AI Video">
+  <meta property="og:description" content="Post-production and AI video pipelines for entertainment and brand work.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav-wrap">
+    <nav class="nav glass" aria-label="Primary">
+      <a class="nav-brand" href="#top">Eric Pereira</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#ai-next">AI Next</a></li>
+        <li><a href="#about">About</a></li>
+        <li data-nav-contact><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1 id="hero-name" data-hero="name">Eric Pereira</h1>
+        <p class="hero-tagline" data-hero="tagline">Post-production and AI video pipelines for entertainment and brand work.</p>
+        <blockquote class="hero-quote" data-hero="quote">“My work sits between traditional post-production and AI-generated video, spanning entertainment, advertising and digital content.”</blockquote>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">View My Work <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-glass" href="#contact" data-hero-contact hidden>Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-head container reveal">
+        <p class="eyebrow">Portfolio</p>
+        <h2 id="work-title">Work</h2>
+        <ul class="chips" data-chips aria-label="Jump to category"></ul>
+      </div>
+      <div data-categories></div>
+    </section>
+
+    <section id="ai-next" class="section ai" aria-labelledby="ai-title">
+      <div class="ai-panel">
+        <div class="section-head container reveal">
+          <p class="eyebrow eyebrow-ai">AI-generated video</p>
+          <h2 id="ai-title">AI Next</h2>
+        </div>
+        <div data-ai></div>
+      </div>
+    </section>
+
+    <section id="about" class="section container" aria-labelledby="about-title">
+      <div class="about reveal">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">Eric Pereira</h2>
+        </div>
+        <div class="about-copy" data-about></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section container" aria-labelledby="contact-title">
+      <div class="contact glass reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s talk</h2>
+        <div class="contact-list" data-contact></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span data-year></span> Eric Pereira</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <div class="draft-pill glass" data-draft hidden role="status"></div>
+
+  <noscript><p class="noscript">This portfolio needs JavaScript enabled to display the project list.</p></noscript>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
