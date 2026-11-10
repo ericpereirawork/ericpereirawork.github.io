@@ -144,10 +144,10 @@ window.SITE = {
   // Leave a field empty to hide it. The hero "Contact" button and the
   // résumé download appear automatically once the relevant field is filled.
   contact: {
-    email: "",      // e.g. "name@example.com"
-    phone: "",      // e.g. "+971 50 000 0000"
-    whatsapp: "",   // full link, e.g. "https://wa.me/971500000000"
-    linkedin: "",   // full profile link
+    email: "ericpereirawork@gmail.com",      // e.g. "name@example.com"
+    phone: "+91 75070 27680",      // e.g. "+971 50 000 0000"
+    whatsapp: "https://wa.me/917507027680",   // full link, e.g. "https://wa.me/971500000000"
+    linkedin: "https://www.linkedin.com/in/eric-pereira-82355260",   // full profile link
     instagram: "",  // full profile link
     resume: "",     // file path, e.g. "files/Eric-Pereira-Resume.pdf"
   },
