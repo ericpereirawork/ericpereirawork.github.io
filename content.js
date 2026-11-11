@@ -123,14 +123,34 @@ window.SITE = {
     },
   ],
 
+  // AI Next is split into rows. Add a line to a row's items to publish a new piece.
+  // Google Drive links work too (the file must be shared as "Anyone with the link").
+  // span: true gives a landscape piece a double-width card in a row of vertical ones.
   aiNext: {
     title: "AI Next",
-    layout: "tall",
-    items: [
-      { title: "Charged: Teaser", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DcpjL0zy4Pt/", cover: "covers/charged-teaser.jpg" },
-      { title: "Charged: Episode 1", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DctGJWiyV55/", cover: "covers/charged-episode-1.jpg" },
-      { title: "Myntra: Father's Day", artist: "AI video", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DZzaUT7J9ue/", cover: "covers/myntra-fathers-day.jpg" },
-      { title: "Fur Jaden × Batman Batpack", artist: "Fur Jaden", role: "", url: "https://www.instagram.com/reel/DYjRfSLuFjd/", cover: "covers/fur-jaden-batpack.jpg" },
+    rows: [
+      {
+        id: "ai-brand",
+        title: "Brand Projects",
+        layout: "tall",
+        items: [
+          { title: "Charged: Teaser", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DcpjL0zy4Pt/", cover: "covers/charged-teaser.jpg" },
+          { title: "Charged: Episode 1", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DctGJWiyV55/", cover: "covers/charged-episode-1.jpg" },
+          { title: "Myntra: Father's Day", artist: "AI video", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DZzaUT7J9ue/", cover: "covers/myntra-fathers-day.jpg" },
+          { title: "Fur Jaden × Batman Batpack", artist: "Fur Jaden", role: "", url: "https://www.instagram.com/reel/DYjRfSLuFjd/", cover: "covers/fur-jaden-batpack.jpg" },
+        ],
+      },
+      {
+        id: "ai-concepts",
+        title: "Concept Work",
+        layout: "tall",
+        items: [
+          { title: "Baby Driver", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DfgqxWrN1M1/", cover: "" },
+          { title: "Anime Concept", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DaXLvjrt3Uz/", cover: "" },
+          { title: "The Last Plum Blossom", artist: "AI concept", role: "", url: "https://drive.google.com/file/d/1IX_r4TqgK5VvTCv0XmHnyxeNzGTgiBxq/view", cover: "none", span: true }, // Drive's own preview frame is black; cover: "none" shows the title plate until a cover image is added
+          { title: "Trailer", artist: "AI concept", role: "", url: "https://drive.google.com/file/d/17UDghN2i8tdqj4tqvNla0B9MoKFtkzVn/view", cover: "" },
+        ],
+      },
     ],
   },
 

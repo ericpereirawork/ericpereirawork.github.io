@@ -38,6 +38,7 @@
   function resolve(item) {
     if (!item.url) return null;
     var u = parseUrl(item.url);
+    if (item.cover === "none") item = Object.assign({}, item, { cover: "", noThumb: true });
     if (!u) { console.warn('[portfolio] "' + item.title + '": link is not a valid URL — left unpublished.'); return null; }
     var yt = youTubeId(u);
     if (yt) return { href: u.href, platform: "YouTube", ytId: yt, thumb: item.cover || "https://i.ytimg.com/vi/" + yt + "/maxresdefault.jpg" };
@@ -47,6 +48,11 @@
         return null;
       }
       return { href: u.href, platform: "Instagram", thumb: item.cover || "" };
+    }
+    if (u.hostname === "drive.google.com") {
+      var d = u.pathname.match(/^\/file\/d\/([\w-]+)/);
+      if (!d) { console.warn('[portfolio] "' + item.title + '": Google Drive link is not a single file — left unpublished.'); return null; }
+      return { href: "https://drive.google.com/file/d/" + d[1] + "/view", platform: "Google Drive", thumb: item.cover || (item.noThumb ? "" : "https://drive.google.com/thumbnail?id=" + d[1] + "&sz=w1280") };
     }
     if (/youtube\.com$|youtu\.be$/.test(u.hostname)) {
       console.warn('[portfolio] "' + item.title + '": YouTube link is not a specific video — left unpublished.');
@@ -74,11 +80,11 @@
     if (!link && !draft) return null;
     if (!link) pendingCount++;
 
-    var c = el("article", "card" + (link ? " live" : ""));
+    var c = el("article", "card" + (link ? " live" : "") + (item.span ? " span2" : ""));
     var thumb = el("div", "thumb");
     if (link && link.thumb) {
       var img = el("img");
-      img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+      img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.referrerPolicy = "no-referrer";
       img.addEventListener("load", function () {
         // YouTube serves a 120px grey placeholder when no HD thumbnail exists.
         if (link.ytId && !item.cover && img.naturalWidth <= 120 && img.src.indexOf("maxresdefault") > -1) {
@@ -194,9 +200,10 @@
 
   /* ---------- AI Next ---------- */
   var ai = SITE.aiNext || { items: [] };
-  var aiRow = row({ id: "ai-projects", title: ai.title || "AI Next", layout: ai.layout, items: ai.items }, false);
-  if (aiRow) $("[data-ai]").appendChild(aiRow);
-  else { $("#ai-next").hidden = true; var aiNav = $('.nav-links a[href="#ai-next"]'); if (aiNav) aiNav.parentNode.hidden = true; }
+  var aiRows = ai.rows || [{ id: "ai-projects", title: "Projects", layout: ai.layout, items: ai.items }];
+  var aiWrap = $("[data-ai]");
+  aiRows.forEach(function (r) { var n = row(r, true); if (n) aiWrap.appendChild(n); });
+  if (!aiWrap.children.length) { $("#ai-next").hidden = true; var aiNav = $('.nav-links a[href="#ai-next"]'); if (aiNav) aiNav.parentNode.hidden = true; }
 
   /* ---------- About ---------- */
   var about = $("[data-about]");
