@@ -174,6 +174,6 @@ window.SITE = {
     whatsapp: "https://wa.me/917507027680",   // full link, e.g. "https://wa.me/971500000000"
     linkedin: "https://www.linkedin.com/in/eric-pereira-82355260",   // full profile link
     instagram: "",  // full profile link
-    resume: "",     // file path, e.g. "files/Eric-Pereira-Resume.pdf"
+    resume: "files/Eric-Pereira-CV.pdf",     // file path, e.g. "files/Eric-Pereira-Resume.pdf"
   },
 };

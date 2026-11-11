@@ -283,7 +283,7 @@
   if (c.whatsapp && parseUrl(c.whatsapp)) contactBtn("WhatsApp", c.whatsapp, { external: true });
   if (c.linkedin && parseUrl(c.linkedin)) contactBtn("LinkedIn", c.linkedin, { external: true });
   if (c.instagram && parseUrl(c.instagram)) contactBtn("Instagram", c.instagram, { external: true });
-  if (c.resume) contactBtn("Download résumé", c.resume, { download: true });
+  if (c.resume) contactBtn("Download CV", c.resume, { download: true });
   if (any) {
     $("[data-hero-contact]").hidden = false;
   } else if (draft) {
