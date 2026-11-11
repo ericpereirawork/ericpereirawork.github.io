@@ -145,8 +145,8 @@ window.SITE = {
         title: "Concept Work",
         layout: "tall",
         items: [
-          { title: "Baby Driver", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DfgqxWrN1M1/", cover: "" },
-          { title: "Anime Concept", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DaXLvjrt3Uz/", cover: "" },
+          { title: "Baby Driver", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DfgqxWrN1M1/", cover: "covers/baby-driver.jpg" },
+          { title: "Anime Concept", artist: "AI concept", role: "", url: "https://www.instagram.com/reel/DaXLvjrt3Uz/", cover: "covers/anime-concept.jpg" },
           { title: "The Last Plum Blossom", artist: "AI concept", role: "", url: "https://drive.google.com/file/d/1IX_r4TqgK5VvTCv0XmHnyxeNzGTgiBxq/view", cover: "none", span: true }, // Drive's own preview frame is black; cover: "none" shows the title plate until a cover image is added
           { title: "Trailer", artist: "AI concept", role: "", url: "https://drive.google.com/file/d/17UDghN2i8tdqj4tqvNla0B9MoKFtkzVn/view", cover: "" },
         ],
