@@ -11,6 +11,8 @@
              Needed for Instagram and non-YouTube links (put the image in
              the "covers" folder). For YouTube it overrides the auto thumbnail.
    • role  → optional. Only shown when filled in.
+   • views → optional number, e.g. views: 1250000 shows "1.3M views" beside
+             the Watch button. Leave it out to show nothing.
    • artist→ optional small line under the title.
 
    A project with an empty url has no watch button. It shows as
@@ -23,6 +25,9 @@ window.SITE = {
     // true  = draft preview: projects without links appear as "Link pending".
     // false = live mode: only projects with a working link are shown.
     showUnpublished: false,
+    // Shown as a tooltip on view counts. The numbers are a snapshot, typed into
+    // each project as views: 123456 — they do not update by themselves.
+    viewsAsOf: "11 November 2026",
   },
 
   hero: {
@@ -39,14 +44,14 @@ window.SITE = {
       title: "Comedy Stand-up Specials",
       layout: "wide",
       items: [
-        { title: "Delulu Express", artist: "Zakir Khan", role: "", url: "https://youtu.be/RbfddNS7eSY", cover: "" },
-        { title: "MannPasand", artist: "Zakir Khan", role: "", url: "https://youtu.be/_Yy4DxzUzzI", cover: "" },
-        { title: "Haq Se Single", artist: "Zakir Khan", role: "", url: "https://youtu.be/S_sgxcTZmuo", cover: "" },
-        { title: "Mood Kharaab", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/V_c-oLhaR_4", cover: "" },
-        { title: "Sushi", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/Q_tcVu5am68", cover: "" },
-        { title: "Biswa Mast Aadmi", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/mcMqCGuvudA", cover: "" },
-        { title: "Who Are You", artist: "Rahul Subramanian", role: "", url: "https://youtu.be/o9Km_3wKA5g", cover: "" },
-        { title: "Rahul Talks To People", artist: "Prime Video India", role: "", url: "https://youtu.be/gMs8Kr2sQ5M", cover: "" },
+        { title: "Delulu Express", artist: "Zakir Khan", role: "", url: "https://youtu.be/RbfddNS7eSY", views: 262252, cover: "" },
+        { title: "MannPasand", artist: "Zakir Khan", role: "", url: "https://youtu.be/_Yy4DxzUzzI", views: 540515, cover: "" },
+        { title: "Haq Se Single", artist: "Zakir Khan", role: "", url: "https://youtu.be/S_sgxcTZmuo", views: 1958297, cover: "" },
+        { title: "Mood Kharaab", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/V_c-oLhaR_4", views: 128494, cover: "" },
+        { title: "Sushi", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/Q_tcVu5am68", views: 497785, cover: "" },
+        { title: "Biswa Mast Aadmi", artist: "Biswa Kalyan Rath", role: "", url: "https://youtu.be/mcMqCGuvudA", views: 732037, cover: "" },
+        { title: "Who Are You", artist: "Rahul Subramanian", role: "", url: "https://youtu.be/o9Km_3wKA5g", views: 69590, cover: "" },
+        { title: "Rahul Talks To People", artist: "Prime Video India", role: "", url: "https://youtu.be/gMs8Kr2sQ5M", views: 185755, cover: "" },
       ],
     },
     {
@@ -54,7 +59,7 @@ window.SITE = {
       title: "OTT Shows",
       layout: "wide",
       items: [
-        { title: "Chacha Vidhayak Hain Humare", artist: "Season 3 · Amazon miniTV", role: "", url: "https://youtu.be/tLO1tKoJfRs", cover: "" },
+        { title: "Chacha Vidhayak Hain Humare", artist: "Season 3 · Amazon miniTV", role: "", url: "https://youtu.be/tLO1tKoJfRs", views: 461757, cover: "" },
       ],
     },
     {
@@ -62,13 +67,13 @@ window.SITE = {
       title: "DVC Ads",
       layout: "wide",
       items: [
-        { title: "Faster Onboarding", artist: "Cashfree Payments", role: "", url: "https://youtu.be/d0hzN9Tb-gY", cover: "" },
-        { title: "Move Fast", artist: "Cashfree Payments", role: "", url: "https://youtu.be/fTxMp6tfCrw", cover: "" },
-        { title: "OPPO F25 Pro 5G", artist: "OPPO India", role: "", url: "https://youtu.be/W1zZMqo4VVg", cover: "" },
-        { title: "Good Mornings feat. Biswa Kalyan", artist: "WhatsApp", role: "", url: "https://youtu.be/4xvnbz19mag", cover: "" },
-        { title: "Good Mornings feat. Gurleen Pannu", artist: "WhatsApp", role: "", url: "https://youtu.be/oI2dV1zMLls", cover: "" },
-        { title: "Good Mornings feat. Aakash Gupta", artist: "WhatsApp", role: "", url: "https://youtu.be/EF_067kg9es", cover: "" },
-        { title: "#MakeItSpecial", artist: "OnePlus India", role: "", url: "https://youtu.be/JdiuWnqSNxg", cover: "" },
+        { title: "Faster Onboarding", artist: "Cashfree Payments", role: "", url: "https://youtu.be/d0hzN9Tb-gY", views: 827706, cover: "" },
+        { title: "Move Fast", artist: "Cashfree Payments", role: "", url: "https://youtu.be/fTxMp6tfCrw", views: 3843727, cover: "" },
+        { title: "OPPO F25 Pro 5G", artist: "OPPO India", role: "", url: "https://youtu.be/W1zZMqo4VVg", views: 6708626, cover: "" },
+        { title: "Good Mornings feat. Biswa Kalyan", artist: "WhatsApp", role: "", url: "https://youtu.be/4xvnbz19mag", views: 10638001, cover: "" },
+        { title: "Good Mornings feat. Gurleen Pannu", artist: "WhatsApp", role: "", url: "https://youtu.be/oI2dV1zMLls", views: 2901065, cover: "" },
+        { title: "Good Mornings feat. Aakash Gupta", artist: "WhatsApp", role: "", url: "https://youtu.be/EF_067kg9es", views: 5530267, cover: "" },
+        { title: "#MakeItSpecial", artist: "OnePlus India", role: "", url: "https://youtu.be/JdiuWnqSNxg", views: 162513201, cover: "" },
       ],
     },
     {
@@ -76,11 +81,11 @@ window.SITE = {
       title: "Marketing",
       layout: "wide",
       items: [
-        { title: "Killer Soup Trailer Reaction", artist: "Netflix India", role: "", url: "https://youtu.be/hMnph8eSqck", cover: "" },
-        { title: "Hilarious Truth About Sunscreens", artist: "Plum · S1E1", role: "", url: "https://youtu.be/Pnp8_SFZEWk", cover: "" },
-        { title: "How NOT to Do Skincare", artist: "Plum · S1E3", role: "", url: "https://youtu.be/kSJK6-FfrzA", cover: "" },
-        { title: "Effort Meets Chemistry", artist: "Plum × Milind Soman", role: "", url: "https://www.youtube.com/watch?v=zFmB3OtHxAA", cover: "" },
-        { title: "The Shortest Interview with Jackie Shroff", artist: "OnePlus 13s · Chalchitra Talks", role: "", url: "https://youtu.be/rEHwOdw9lRY", cover: "" },
+        { title: "Killer Soup Trailer Reaction", artist: "Netflix India", role: "", url: "https://youtu.be/hMnph8eSqck", views: 3193158, cover: "" },
+        { title: "Hilarious Truth About Sunscreens", artist: "Plum · S1E1", role: "", url: "https://youtu.be/Pnp8_SFZEWk", views: 1180259, cover: "" },
+        { title: "How NOT to Do Skincare", artist: "Plum · S1E3", role: "", url: "https://youtu.be/kSJK6-FfrzA", views: 1012978, cover: "" },
+        { title: "Effort Meets Chemistry", artist: "Plum × Milind Soman", role: "", url: "https://www.youtube.com/watch?v=zFmB3OtHxAA", views: 585063, cover: "" },
+        { title: "The Shortest Interview with Jackie Shroff", artist: "OnePlus 13s · Chalchitra Talks", role: "", url: "https://youtu.be/rEHwOdw9lRY", views: 39594, cover: "" },
       ],
     },
     {
@@ -88,12 +93,12 @@ window.SITE = {
       title: "Branded Content",
       layout: "wide",
       items: [
-        { title: "Knights Dugout Podcast EP 2", artist: "Kolkata Knight Riders", role: "", url: "https://youtu.be/T8xj9Axgxgs", cover: "" },
-        { title: "GoibiBRO Birthday Sale", artist: "Goibibo", role: "", url: "https://youtu.be/J6LGVaG8icI", cover: "" },
-        { title: "Vir Das & Kalki", artist: "The Durex Podcast · EP 1", role: "", url: "https://youtu.be/v9-CljO9EpI", cover: "" },
-        { title: "Real Talk With MostlySane & Adarsh Gourav", artist: "The Durex Podcast", role: "", url: "https://youtu.be/YSdhgCHgA8Y", cover: "" },
-        { title: "Rohan & Vir Das: The Ultimate Comedy Watchlist", artist: "IMDb", role: "", url: "https://youtu.be/thvmOXByaxg", cover: "" },
-        { title: "The Ultimate ‘Film Bro’ Watchlist", artist: "Rohan Joshi & Kullu · IMDb", role: "", url: "https://youtu.be/OJ_6F74v1a0", cover: "" },
+        { title: "Knights Dugout Podcast EP 2", artist: "Kolkata Knight Riders", role: "", url: "https://youtu.be/T8xj9Axgxgs", views: 922610, cover: "" },
+        { title: "GoibiBRO Birthday Sale", artist: "Goibibo", role: "", url: "https://youtu.be/J6LGVaG8icI", views: 1178783, cover: "" },
+        { title: "Vir Das & Kalki", artist: "The Durex Podcast · EP 1", role: "", url: "https://youtu.be/v9-CljO9EpI", views: 1149949, cover: "" },
+        { title: "Real Talk With MostlySane & Adarsh Gourav", artist: "The Durex Podcast", role: "", url: "https://youtu.be/YSdhgCHgA8Y", views: 727535, cover: "" },
+        { title: "Rohan & Vir Das: The Ultimate Comedy Watchlist", artist: "IMDb", role: "", url: "https://youtu.be/thvmOXByaxg", views: 158109, cover: "" },
+        { title: "The Ultimate ‘Film Bro’ Watchlist", artist: "Rohan Joshi & Kullu · IMDb", role: "", url: "https://youtu.be/OJ_6F74v1a0", views: 204299, cover: "" },
       ],
     },
     {
@@ -101,8 +106,8 @@ window.SITE = {
       title: "Music Videos",
       layout: "wide",
       items: [
-        { title: "BREEZER Tribe 1 O' 1", artist: "feat. Yashraj", role: "", url: "https://youtu.be/eHQjTHLjS8w", cover: "" },
-        { title: "Jaadugari", artist: "Maahi · Saregama Originals", role: "", url: "https://youtu.be/23wy9R_YZGM", cover: "" },
+        { title: "BREEZER Tribe 1 O' 1", artist: "feat. Yashraj", role: "", url: "https://youtu.be/eHQjTHLjS8w", views: 5254, cover: "" },
+        { title: "Jaadugari", artist: "Maahi · Saregama Originals", role: "", url: "https://youtu.be/23wy9R_YZGM", views: 5828049, cover: "" },
         { title: "Why Is She Running?", artist: "Cosmix", role: "", url: "https://www.instagram.com/reel/DYWP2dxyMba/", cover: "covers/cosmix-why-is-she-running.jpg" },
       ],
     },

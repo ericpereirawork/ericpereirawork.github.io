@@ -112,6 +112,13 @@
     if (note) f.appendChild(el("span", "fallback-note", note));
     return f;
   }
+  function fmtViews(n) {
+    function f(x, unit) { return (x >= 100 ? Math.round(x) : Math.round(x * 10) / 10) + unit; }
+    if (n >= 1e9) return f(n / 1e9, "B");
+    if (n >= 1e6) return f(n / 1e6, "M");
+    if (n >= 1e3) return f(n / 1e3, "K");
+    return String(n);
+  }
   function card(item, layout) {
     var link = resolve(item);
     if (!link && !draft) return null;
@@ -164,7 +171,14 @@
         var shape = link.shape || (layout === "tall" && !item.span ? "tall" : "wide");
         openPlayer(item, link, shape);
       });
-      body.appendChild(a);
+      var actions = el("div", "card-actions");
+      actions.appendChild(a);
+      if (typeof item.views === "number" && item.views > 0) {
+        var v = el("span", "views", fmtViews(item.views) + " views");
+        if (SITE.settings && SITE.settings.viewsAsOf) v.title = link.platform + " views as of " + SITE.settings.viewsAsOf;
+        actions.appendChild(v);
+      }
+      body.appendChild(actions);
     } else {
       body.appendChild(el("span", "pending", "Link pending"));
     }

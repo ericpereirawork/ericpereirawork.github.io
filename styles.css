@@ -246,8 +246,10 @@ h2 {
 .card-role { color: #d4d4dc; font-size: 0.88rem; margin-top: 6px; }
 .card-role b { color: var(--muted); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 6px; }
 
+.card-actions { display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.views { position: relative; z-index: 1; font-size: 0.86rem; font-weight: 700; color: #c4c4cc; white-space: nowrap; }
 .watch {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
   padding: 9px 16px 9px 13px; border-radius: 999px; font-size: 0.88rem; font-weight: 700;
   background: #fff; color: #0a0a0c;
   transition: background-color 0.2s var(--ease);
