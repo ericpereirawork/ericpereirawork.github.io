@@ -272,7 +272,7 @@ dialog.player::backdrop {
 }
 dialog.player[open] { animation: rise 0.35s var(--ease) both; }
 .player-shell { padding: 10px; border-radius: 26px; }
-.player-bar { display: flex; align-items: center; gap: 12px; padding: 4px 4px 10px 10px; }
+.player-bar { display: flex; align-items: center; gap: 12px; padding: 4px 4px 10px 10px; box-sizing: border-box; width: 0; min-width: 100%; } /* bar follows the video width, never widens it */
 .player-title { flex: 1; min-width: 0; font-weight: 700; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .player-ext { font-size: 0.82rem; font-weight: 600; color: #c4c4cc; white-space: nowrap; padding: 6px 4px; }
 .player-ext:hover { color: #fff; }
