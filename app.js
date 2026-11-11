@@ -41,18 +41,19 @@
     if (item.cover === "none") item = Object.assign({}, item, { cover: "", noThumb: true });
     if (!u) { console.warn('[portfolio] "' + item.title + '": link is not a valid URL — left unpublished.'); return null; }
     var yt = youTubeId(u);
-    if (yt) return { href: u.href, platform: "YouTube", ytId: yt, thumb: item.cover || "https://i.ytimg.com/vi/" + yt + "/maxresdefault.jpg" };
+    if (yt) return { href: u.href, platform: "YouTube", ytId: yt, shape: "wide", embed: "https://www.youtube-nocookie.com/embed/" + yt + "?autoplay=1&rel=0&playsinline=1", thumb: item.cover || "https://i.ytimg.com/vi/" + yt + "/maxresdefault.jpg" };
     if (isInstagram(u)) {
       if (!isInstagramPost(u)) {
         console.warn('[portfolio] "' + item.title + '": Instagram link must be an individual reel/post, not a profile — left unpublished.');
         return null;
       }
-      return { href: u.href, platform: "Instagram", thumb: item.cover || "" };
+      var ig = u.pathname.match(/(reel|reels|p|tv)\/([\w-]+)/);
+      return { href: u.href, platform: "Instagram", shape: "tall", embed: "https://www.instagram.com/" + (ig[1] === "reels" ? "reel" : ig[1]) + "/" + ig[2] + "/embed/", thumb: item.cover || "" };
     }
     if (u.hostname === "drive.google.com") {
       var d = u.pathname.match(/^\/file\/d\/([\w-]+)/);
       if (!d) { console.warn('[portfolio] "' + item.title + '": Google Drive link is not a single file — left unpublished.'); return null; }
-      return { href: "https://drive.google.com/file/d/" + d[1] + "/view", platform: "Google Drive", thumb: item.cover || (item.noThumb ? "" : "https://drive.google.com/thumbnail?id=" + d[1] + "&sz=w1280") };
+      return { href: "https://drive.google.com/file/d/" + d[1] + "/view", platform: "Google Drive", embed: "https://drive.google.com/file/d/" + d[1] + "/preview", thumb: item.cover || (item.noThumb ? "" : "https://drive.google.com/thumbnail?id=" + d[1] + "&sz=w1280") };
     }
     if (/youtube\.com$|youtu\.be$/.test(u.hostname)) {
       console.warn('[portfolio] "' + item.title + '": YouTube link is not a specific video — left unpublished.');
@@ -61,6 +62,42 @@
     return { href: u.href, platform: u.hostname.replace(/^www\./, ""), thumb: item.cover || "" };
   }
   window.__portfolioResolve = resolve; // exposed for testing
+
+  /* ---------- On-site player ---------- */
+  var player = null;
+  function openPlayer(item, link, shape) {
+    if (!player) {
+      player = el("dialog", "player");
+      player.innerHTML =
+        '<div class="player-shell glass">' +
+          '<div class="player-bar"><p class="player-title"></p>' +
+          '<a class="player-ext" target="_blank" rel="noopener noreferrer"></a>' +
+          '<button class="player-close" type="button" aria-label="Close player">\u2715</button></div>' +
+          '<div class="player-frame"></div>' +
+        '</div>';
+      document.body.appendChild(player);
+      player.querySelector(".player-close").addEventListener("click", function () { player.close(); });
+      player.addEventListener("click", function (e) { if (e.target === player) player.close(); });
+      // Removing the frame on close is what stops the video and its sound.
+      player.addEventListener("close", function () { if (!player.open) player.querySelector(".player-frame").innerHTML = ""; });
+    }
+    player.setAttribute("aria-label", item.title + " — video player");
+    player.querySelector(".player-title").textContent = item.title + (item.artist ? " · " + item.artist : "");
+    var ext = player.querySelector(".player-ext");
+    ext.href = link.href; ext.textContent = "Open on " + link.platform + " \u2197";
+    var frame = player.querySelector(".player-frame");
+    frame.className = "player-frame " + shape + (link.platform === "Instagram" ? " ig" : "");
+    var f = document.createElement("iframe");
+    f.title = item.title;
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.innerHTML = "";
+    if (!player.open) player.showModal();
+    // Load the video only once the player is visible; Instagram's embed renders blank otherwise.
+    f.src = link.embed;
+    frame.appendChild(f);
+  }
 
   /* ---------- Cards ---------- */
   function hue(str) {
@@ -75,7 +112,7 @@
     if (note) f.appendChild(el("span", "fallback-note", note));
     return f;
   }
-  function card(item) {
+  function card(item, layout) {
     var link = resolve(item);
     if (!link && !draft) return null;
     if (!link) pendingCount++;
@@ -117,7 +154,16 @@
       a.href = link.href; a.target = "_blank"; a.rel = "noopener noreferrer";
       a.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.2v9.6a.6.6 0 0 0 .9.5l8-4.8a.6.6 0 0 0 0-1L2.9.7a.6.6 0 0 0-.9.5z" fill="currentColor"/></svg>';
       a.appendChild(document.createTextNode("Watch"));
-      a.setAttribute("aria-label", "Watch " + item.title + (item.artist ? ", " + item.artist : "") + " on " + link.platform + " (opens in a new tab)");
+      var canPlay = !!link.embed && typeof HTMLDialogElement !== "undefined";
+      a.setAttribute("aria-label", canPlay
+        ? "Play " + item.title + (item.artist ? ", " + item.artist : "")
+        : "Watch " + item.title + (item.artist ? ", " + item.artist : "") + " on " + link.platform + " (opens in a new tab)");
+      if (canPlay) a.addEventListener("click", function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return; // let "open in new tab" work
+        e.preventDefault();
+        var shape = link.shape || (layout === "tall" && !item.span ? "tall" : "wide");
+        openPlayer(item, link, shape);
+      });
       body.appendChild(a);
     } else {
       body.appendChild(el("span", "pending", "Link pending"));
@@ -127,7 +173,7 @@
   }
 
   function row(cat, showHeading) {
-    var cards = (cat.items || []).map(card).filter(Boolean);
+    var cards = (cat.items || []).map(function (i) { return card(i, cat.layout); }).filter(Boolean);
     if (!cards.length && !draft) return null;
 
     var sec = el("section", "row reveal");

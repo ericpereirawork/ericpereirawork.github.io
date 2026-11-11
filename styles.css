@@ -261,6 +261,33 @@ h2 {
   border: 1px dashed rgba(255, 255, 255, 0.22);
 }
 
+/* ---------- On-site player ---------- */
+dialog.player {
+  border: 0; padding: 0; margin: auto; background: transparent; color: inherit;
+  max-width: none; max-height: none; overflow: visible;
+}
+dialog.player::backdrop {
+  background: rgba(4, 4, 8, 0.74);
+  -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%);
+}
+dialog.player[open] { animation: rise 0.35s var(--ease) both; }
+.player-shell { padding: 10px; border-radius: 26px; }
+.player-bar { display: flex; align-items: center; gap: 12px; padding: 4px 4px 10px 10px; }
+.player-title { flex: 1; min-width: 0; font-weight: 700; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-ext { font-size: 0.82rem; font-weight: 600; color: #c4c4cc; white-space: nowrap; padding: 6px 4px; }
+.player-ext:hover { color: #fff; }
+.player-close {
+  width: 38px; height: 38px; flex: none; border-radius: 50%; cursor: pointer; color: var(--text); font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.player-close:hover { background: rgba(255, 255, 255, 0.2); }
+.player-frame { border-radius: 18px; overflow: hidden; background: #000; }
+.player-frame.wide { width: min(calc(100vw - 44px), 1280px, calc((100vh - 130px) * 16 / 9)); aspect-ratio: 16 / 9; }
+.player-frame.tall { height: min(calc(100vh - 130px), 800px); aspect-ratio: 9 / 16; max-width: calc(100vw - 44px); }
+.player-frame.tall.ig { aspect-ratio: auto; width: min(calc(100vw - 44px), 420px); background: #fff; }
+.player-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+@media (max-width: 560px) { .player-ext { font-size: 0.78rem; } }
+
 /* ---------- AI Next ---------- */
 .ai { padding-inline: clamp(8px, 1.5vw, 24px); }
 .ai-panel {
