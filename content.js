@@ -32,6 +32,7 @@ window.SITE = {
 
   hero: {
     name: "Eric Pereira",
+    location: "Mumbai, India · Open to opportunities in Dubai", // small line above the name; leave empty to hide
     tagline: "Post-production and AI video pipelines for entertainment and brand work.",
     quote:
       "My work sits between traditional post-production and AI-generated video, spanning entertainment, advertising and digital content.",
@@ -139,9 +140,9 @@ window.SITE = {
         title: "Brand Projects",
         layout: "tall",
         items: [
-          { title: "Charged: Teaser", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DcpjL0zy4Pt/", cover: "covers/charged-teaser.jpg" },
-          { title: "Charged: Episode 1", artist: "Micro drama", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DctGJWiyV55/", cover: "covers/charged-episode-1.jpg" },
-          { title: "Myntra: Father's Day", artist: "AI video", role: "AI visuals, editing and finishing.", url: "https://www.instagram.com/reel/DZzaUT7J9ue/", cover: "covers/myntra-fathers-day.jpg" },
+          { title: "Run Riya Run: Teaser", artist: "Charged PRO · Micro drama", role: "Creative direction and post-production lead. Series: 8.6M+ views.", url: "https://www.instagram.com/reel/DcpjL0zy4Pt/", cover: "covers/charged-teaser.jpg" },
+          { title: "Run Riya Run: Episode 1", artist: "Charged PRO · Micro drama", role: "Creative direction and post-production lead.", url: "https://www.instagram.com/reel/DctGJWiyV55/", cover: "covers/charged-episode-1.jpg" },
+          { title: "Dad-Style Evolution", artist: "Myntra · Father's Day", role: "AI video pipeline for an AI-led Father's Day fashion film.", url: "https://www.instagram.com/reel/DZzaUT7J9ue/", cover: "covers/myntra-fathers-day.jpg" },
           { title: "Fur Jaden × Batman Batpack", artist: "Fur Jaden", role: "", url: "https://www.instagram.com/reel/DYjRfSLuFjd/", cover: "covers/fur-jaden-batpack.jpg" },
         ],
       },
@@ -161,8 +162,9 @@ window.SITE = {
 
   about: {
     paragraphs: [
-      "I'm a post-production and AI video professional with hands-on editing experience.",
-      "My work sits between traditional post-production and AI-generated video, spanning entertainment, advertising and digital content — stand-up comedy specials, OTT shows, DVC ads, marketing films and short-form reels, alongside AI video pipelines.",
+      "I'm an AI creative, director and Head of Post Production at Only Much Louder (OML), with an editing career running from 2011 to today.",
+      "My work sits between traditional post-production and AI-generated video, spanning entertainment, advertising and digital content. At OML I lead six editors and two AI artists across four divisions, combining hands-on generative workflows with editorial craft.",
+      "I led creative direction and post-production on Charged PRO's Run Riya Run: 9 episodes and 27 reels delivered in 45 days, with the series reaching 8.6M+ views. Earlier, I edited Star Sports promos at Prime Focus Technologies and long-form comedy featuring Zakir Khan and Biswa Kalyan Rath.",
     ],
   },
 

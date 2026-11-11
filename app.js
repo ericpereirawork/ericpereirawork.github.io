@@ -240,6 +240,7 @@
   /* ---------- Hero ---------- */
   var hero = SITE.hero || {};
   if (hero.name) $('[data-hero="name"]').textContent = hero.name;
+  if (hero.location) { var loc = $('[data-hero="location"]'); loc.textContent = hero.location; loc.hidden = false; }
   if (hero.tagline) $('[data-hero="tagline"]').textContent = hero.tagline;
   if (hero.quote) $('[data-hero="quote"]').textContent = "“" + hero.quote + "”";
 

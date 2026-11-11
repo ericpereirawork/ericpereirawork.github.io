@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -34,6 +34,7 @@
     <section class="hero" aria-labelledby="hero-name">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-inner">
+        <p class="hero-loc" data-hero="location" hidden></p>
         <h1 id="hero-name" data-hero="name">Eric Pereira</h1>
         <p class="hero-tagline" data-hero="tagline">Post-production and AI video pipelines for entertainment and brand work.</p>
         <blockquote class="hero-quote" data-hero="quote">“My work sits between traditional post-production and AI-generated video, spanning entertainment, advertising and digital content.”</blockquote>
@@ -98,7 +99,7 @@
       c.src = "content.js?t=" + Date.now();
       c.onload = function () {
         var a = document.createElement("script");
-        a.src = "app.js?v=7";
+        a.src = "app.js?v=8";
         document.body.appendChild(a);
       };
       document.body.appendChild(c);
