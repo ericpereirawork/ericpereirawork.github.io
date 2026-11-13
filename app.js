@@ -283,6 +283,7 @@
   if (c.phone) contactBtn(c.phone, "tel:" + c.phone.replace(/[^\d+]/g, ""));
   if (c.whatsapp && parseUrl(c.whatsapp)) contactBtn("WhatsApp", c.whatsapp, { external: true });
   if (c.linkedin && parseUrl(c.linkedin)) contactBtn("LinkedIn", c.linkedin, { external: true });
+  if (c.imdb && parseUrl(c.imdb)) contactBtn("IMDb", c.imdb, { external: true });
   if (c.instagram && parseUrl(c.instagram)) contactBtn("Instagram", c.instagram, { external: true });
   if (c.resume) contactBtn("Download CV", c.resume, { download: true });
   if (any) {

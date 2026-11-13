@@ -173,6 +173,7 @@ window.SITE = {
     phone: "+91 75070 27680",      // e.g. "+971 50 000 0000"
     whatsapp: "https://wa.me/917507027680",   // full link, e.g. "https://wa.me/971500000000"
     linkedin: "https://www.linkedin.com/in/eric-pereira-82355260",   // full profile link
+    imdb: "https://www.imdb.com/name/nm10890420/",
     instagram: "",  // full profile link
     resume: "files/Eric-Pereira-CV.pdf",     // file path, e.g. "files/Eric-Pereira-Resume.pdf"
   },
